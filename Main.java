@@ -166,6 +166,7 @@ class Main {
 
   public static void main(String[] args) {
 
+    // りんごの種類
     String[][] apples = {
       {"red", "100", "5", "fuji"},
       {"magenda", "150", "2", "tsugaru"},
@@ -175,6 +176,7 @@ class Main {
     };
     int appleCount = apples.length;
 
+    // バナナの種類
     String[][] bananas = {
       {"yellow", "50", "5", "3"},
       {"green", "30", "2", "4"},
@@ -185,6 +187,7 @@ class Main {
     };
     int bananaCount = bananas.length;
 
+    // 家族情報・データ
     String[] family = {"ichirou", "jirou", "saburou"};
     String[] ichiroData = { "0", "0"};
     int[] jiroData = { 0, 0};
@@ -194,6 +197,7 @@ class Main {
 
     int gameCount = 0;
 
+    // りんごとバナナがなくなるまで続く
     while (appleCount > 0 || bananaCount > 0) {
 
       // ゲームは５回まで
@@ -202,10 +206,13 @@ class Main {
         break;
       }
 
+      // どちらを食べるか標準入力で聞く
       System.out.print("Do you want apple or yellow>");
       String fruit = sc.next();
       String[] data;
+
       if (fruit.equals("apple")) {
+        // りんごがもうない場合は再入力させる
         if (appleCount <= 0) {
           System.out.println("");
           System.out.println("Sorry! apple is sold out.");
@@ -216,6 +223,7 @@ class Main {
         appleCount--;
 
       } else if (fruit.equals("banana")) {
+        // バナナがもうない場合は再入力させる
         if (bananaCount <= 0) {
           System.out.println("");
           System.out.println("Sorry! banana is sold out.");
@@ -232,7 +240,7 @@ class Main {
         continue;
       }
 
-
+      // 指定されたフルーツを各自に与える
       int manpukuCount = 0;
       for (int i = 0; i < family.length; i++) {
         switch (family[i]) {
@@ -270,6 +278,7 @@ class Main {
         }
       }
 
+      // 全員満腹になったらゲームクリア！
       if (manpukuCount == family.length) {
         System.out.println("");
         System.out.println(" Game Clear !!!! game count is " + gameCount);
@@ -310,6 +319,8 @@ class Main {
       }
 
     }
+
+    // 指定回数を超えてしまったらゲームオーバー
     System.out.println("");
     System.out.println("GAME OVER!");
     System.out.println("");
